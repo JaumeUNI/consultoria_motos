@@ -1,0 +1,23 @@
+{
+    "bikes": [
+        {
+            "model": "Honda CBR 1000RR",
+            "colors": [
+                {"name": "Vermell", "price": 500, "image": "images/red_bike.jpg"},
+                {"name": "Negre", "price": 300, "image": "images/black_bike.jpg"},
+                {"name": "Blanc", "price": 400, "image": "images/white_bike.jpg"}
+            ],
+            "basePrice": 15000,
+            "minPrice": 15300
+        },
+        {
+            "model": "Yamaha R1",
+            "colors": [
+                {"name": "Blau", "price": 600, "image": "images/blue_bike.jpg"},
+                {"name": "Gris", "price": 450, "image": "images/gray_bike.jpg"}
+            ],
+            "basePrice": 16000,
+            "minPrice": 16450
+        }
+    ]
+}
