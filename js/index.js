@@ -51,11 +51,6 @@ function selectBike(model) {
 // LocalStorage guardi info config de cada moto que es cliqui per separat (Bike(n))
     localStorage.setItem('Bike'+model, JSON.stringify(selectedBike));
 
-// Todo    
-// LocalStorage guardi el color seleccionat de la configuració de la moto seleccionada
-    colorbike = document.getElementById('colorSelect').value;
-    localStorage.setItem('colorbike', JSON.stringify(colorbike));
-
 }
 
 // Funcio que mostra la configuracio de la moto seleccionada
