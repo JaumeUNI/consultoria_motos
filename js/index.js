@@ -13,43 +13,36 @@ async function loadBikeData() {
     }
 }
 
-// Funcio que genera les opcions del filtre de preu
-function generatePriceFilterOptions() {
+// Funcio que inicialitza el slider de preu
+function initializePriceSlider() {
     const prices = bikes.map(bike => bike.minPrice);
     const minPrice = Math.min(...prices);
     const maxPrice = Math.max(...prices);
-    const step = 5000; // Defineix el rang de cada opció
 
     const priceFilter = document.getElementById('priceFilter');
-    priceFilter.innerHTML = '<option value="">Tots els preus</option>';
+    const priceValue = document.getElementById('priceValue');
 
-    for (let i = minPrice; i < maxPrice; i += step) {
-        const rangeStart = i;
-        const rangeEnd = i + step - 1;
-        priceFilter.innerHTML += `<option value="${rangeStart}-${rangeEnd}">${rangeStart}€ - ${rangeEnd}€</option>`;
-    }
+    priceFilter.min = minPrice;
+    priceFilter.max = maxPrice;
+    priceFilter.value = maxPrice;
+    priceValue.textContent = maxPrice;
 
-    priceFilter.innerHTML += `<option value=">${maxPrice}">Més de ${maxPrice}€</option>`;
+    priceFilter.addEventListener('input', () => {
+        priceValue.textContent = priceFilter.value;
+        displayBikes();
+    });
 }
 
 // Funcio que filtra les motos segons els filtres
 function filterBikes() {
     const modelSearch = document.getElementById('modelSearch').value.toLowerCase();
     const colorFilter = document.getElementById('colorFilter').value;
-    const priceFilter = document.getElementById('priceFilter').value;
+    const maxPrice = document.getElementById('priceFilter').value;
 
     return bikes.filter(bike => {
         const matchesModel = bike.model.toLowerCase().includes(modelSearch);
         const matchesColor = !colorFilter || bike.colors.some(c => c.name === colorFilter);
-        const matchesPrice = (() => {
-            if (!priceFilter) return true;
-            const [min, max] = priceFilter.includes('<') 
-                ? [0, parseInt(priceFilter.slice(1))]
-                : priceFilter.includes('>') 
-                ? [parseInt(priceFilter.slice(1)), Infinity]
-                : priceFilter.split('-').map(Number);
-            return bike.minPrice >= min && bike.minPrice <= max;
-        })();
+        const matchesPrice = !maxPrice || bike.minPrice <= parseInt(maxPrice);
 
         return matchesModel && matchesColor && matchesPrice;
     });
@@ -75,9 +68,12 @@ function selectBike(model) {
     selectedBike = bikes.find(b => b.model === model);
     displayConfiguration();
     displayBikes();
-// LocalStorage guardi info config de cada moto que es cliqui per separat (Bike(n))
-    localStorage.setItem('Bike'+model, JSON.stringify(selectedBike));
+    // LocalStorage guardi info config de cada moto que es cliqui per separat (Bike(n))
+    localStorage.setItem('Bike' + model, JSON.stringify(selectedBike));
 
+    // Scroll to the configuration section
+    const configSection = document.getElementById('configuration');
+    configSection.scrollIntoView({ behavior: 'smooth' });
 }
 
 // Funcio que mostra la configuracio de la moto seleccionada
@@ -119,8 +115,8 @@ function init() {
         colorFilter.innerHTML += `<option value="${color}">${color}</option>`;
     });
 
-    // Generar opcions del filtre de preu
-    generatePriceFilterOptions();
+    // Initialize the price slider
+    initializePriceSlider();
 
     // Event listeners
     document.querySelectorAll('.filters input, .filters select').forEach(element => {
@@ -129,7 +125,7 @@ function init() {
 
     document.getElementById('colorSelect').addEventListener('change', updateConfiguration);
 
-    if(selectedBike) selectBike(selectedBike.model);
+    if (selectedBike) selectBike(selectedBike.model);
     displayBikes();
 }
 
