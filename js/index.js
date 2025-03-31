@@ -13,17 +13,44 @@ async function loadBikeData() {
     }
 }
 
+// Funcio que genera les opcions del filtre de preu
+function generatePriceFilterOptions() {
+    const prices = bikes.map(bike => bike.minPrice);
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    const step = 5000; // Defineix el rang de cada opció
+
+    const priceFilter = document.getElementById('priceFilter');
+    priceFilter.innerHTML = '<option value="">Tots els preus</option>';
+
+    for (let i = minPrice; i < maxPrice; i += step) {
+        const rangeStart = i;
+        const rangeEnd = i + step - 1;
+        priceFilter.innerHTML += `<option value="${rangeStart}-${rangeEnd}">${rangeStart}€ - ${rangeEnd}€</option>`;
+    }
+
+    priceFilter.innerHTML += `<option value=">${maxPrice}">Més de ${maxPrice}€</option>`;
+}
+
 // Funcio que filtra les motos segons els filtres
 function filterBikes() {
     const modelSearch = document.getElementById('modelSearch').value.toLowerCase();
     const colorFilter = document.getElementById('colorFilter').value;
-    const maxPrice = document.getElementById('maxPrice').value;
+    const priceFilter = document.getElementById('priceFilter').value;
 
     return bikes.filter(bike => {
         const matchesModel = bike.model.toLowerCase().includes(modelSearch);
         const matchesColor = !colorFilter || bike.colors.some(c => c.name === colorFilter);
-        const matchesPrice = !maxPrice || bike.minPrice <= parseInt(maxPrice);
-        
+        const matchesPrice = (() => {
+            if (!priceFilter) return true;
+            const [min, max] = priceFilter.includes('<') 
+                ? [0, parseInt(priceFilter.slice(1))]
+                : priceFilter.includes('>') 
+                ? [parseInt(priceFilter.slice(1)), Infinity]
+                : priceFilter.split('-').map(Number);
+            return bike.minPrice >= min && bike.minPrice <= max;
+        })();
+
         return matchesModel && matchesColor && matchesPrice;
     });
 }
@@ -92,6 +119,9 @@ function init() {
         colorFilter.innerHTML += `<option value="${color}">${color}</option>`;
     });
 
+    // Generar opcions del filtre de preu
+    generatePriceFilterOptions();
+
     // Event listeners
     document.querySelectorAll('.filters input, .filters select').forEach(element => {
         element.addEventListener('input', displayBikes);
@@ -103,5 +133,31 @@ function init() {
     displayBikes();
 }
 
-// Iniciar la carga de datos
-loadBikeData();
+// Funció per carregar pàgines dinàmicament
+async function loadPage(page) {
+    try {
+        const response = await fetch(`./pages/${page}`);
+        const content = await response.text();
+        const mainContent = document.getElementById('mainContent');
+        mainContent.innerHTML = content;
+
+        // Executar scripts dins del contingut carregat
+        const scripts = mainContent.querySelectorAll('script');
+        scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            newScript.textContent = script.textContent;
+            document.body.appendChild(newScript).parentNode.removeChild(newScript);
+        });
+
+        // Si la pàgina carregada és home.html, inicialitzar les dades de les motos
+        if (page === 'home.html') {
+            loadBikeData();
+        }
+    } catch (error) {
+        console.error('Error carregant la pàgina:', error);
+        document.getElementById('mainContent').innerHTML = '<p>Error carregant el contingut.</p>';
+    }
+}
+
+// Carregar la pàgina inicial
+document.addEventListener('DOMContentLoaded', () => loadPage('home.html'));

@@ -18,6 +18,150 @@
             ],
             "basePrice": 16000,
             "minPrice": 16450
+        },
+        {
+            "model": "Kawasaki Ninja ZX-10R",
+            "colors": [
+                {"name": "Verd", "price": 700, "image": "images/green_bike.jpg"},
+                {"name": "Negre", "price": 400, "image": "images/matte_black_bike.jpg"}
+            ],
+            "basePrice": 17800,
+            "minPrice": 18200
+        },
+        {
+            "model": "Ducati Panigale V4",
+            "colors": [
+                {"name": "Vermell", "price": 900, "image": "images/red_bike.jpg"},
+                {"name": "Gris", "price": 650, "image": "images/metallic_gray_bike.jpg"}
+            ],
+            "basePrice": 24500,
+            "minPrice": 25150
+        },
+        {
+            "model": "BMW S1000RR",
+            "colors": [
+                {"name": "Blau", "price": 750, "image": "images/blue_bike.jpg"},
+                {"name": "Blanc", "price": 600, "image": "images/white_bike.jpg"}
+            ],
+            "basePrice": 21200,
+            "minPrice": 21800
+        },
+        {
+            "model": "Suzuki GSX-R 750",
+            "colors": [
+                {"name": "Blau", "price": 550, "image": "images/blue_black_bike.jpg"},
+                {"name": "Gris", "price": 700, "image": "images/silver_bike.jpg"}
+            ],
+            "basePrice": 13500,
+            "minPrice": 14050
+        },
+        {
+            "model": "Aprilia RSV4 1100",
+            "colors": [
+                {"name": "Negre", "price": 1200, "image": "images/carbon_black_bike.jpg"},
+                {"name": "Groc", "price": 850, "image": "images/yellow_bike.jpg"}
+            ],
+            "basePrice": 22800,
+            "minPrice": 23650
+        },
+        {
+            "model": "Triumph Street Triple RS",
+            "colors": [
+                {"name": "Verd", "price": 600, "image": "images/green_bike.jpg"},
+                {"name": "Gris", "price": 450, "image": "images/graphite_bike.jpg"}
+            ],
+            "basePrice": 14200,
+            "minPrice": 14650
+        },
+        {
+            "model": "MV Agusta Brutale 1000",
+            "colors": [
+                {"name": "Gris", "price": 1500, "image": "images/silver_red_bike.jpg"},
+                {"name": "Groc", "price": 1800, "image": "images/matte_gold_bike.jpg"}
+            ],
+            "basePrice": 31500,
+            "minPrice": 33000
+        },
+        {
+            "model": "KTM 1290 Super Duke R",
+            "colors": [
+                {"name": "Taronja", "price": 800, "image": "images/orange_bike.jpg"},
+                {"name": "Negre", "price": 500, "image": "images/phantom_black_bike.jpg"}
+            ],
+            "basePrice": 19200,
+            "minPrice": 19700
+        },
+        {
+            "model": "Harley-Davidson Sportster S",
+            "colors": [
+                {"name": "Vermell", "price": 950, "image": "images/red_bike.jpg"},
+                {"name": "Negre", "price": 350, "image": "images/matte_black_bike.jpg"}
+            ],
+            "basePrice": 16800,
+            "minPrice": 17150
+        },
+        {
+            "model": "Indian Scout Bobber",
+            "colors": [
+                {"name": "Negre", "price": 300, "image": "images/black_bike.jpg"},
+                {"name": "Marró", "price": 600, "image": "images/brown_bike.jpg"}
+            ],
+            "basePrice": 14500,
+            "minPrice": 14800
+        },
+        {
+            "model": "Honda Africa Twin",
+            "colors": [
+                {"name": "Vermell", "price": 550, "image": "images/red_bike.jpg"},
+                {"name": "Blanc", "price": 650, "image": "images/white_bike.jpg"}
+            ],
+            "basePrice": 18400,
+            "minPrice": 18950
+        },
+        {
+            "model": "Yamaha MT-09",
+            "colors": [
+                {"name": "Blau", "price": 400, "image": "images/blue_bike.jpg"},
+                {"name": "Gris", "price": 300, "image": "images/gray_bike.jpg"}
+            ],
+            "basePrice": 11500,
+            "minPrice": 11800
+        },
+        {
+            "model": "BMW R1250GS Adventure",
+            "colors": [
+                {"name": "Blau", "price": 900, "image": "images/blue_bike.jpg"},
+                {"name": "Blanc", "price": 800, "image": "images/white_bike.jpg"}
+            ],
+            "basePrice": 23800,
+            "minPrice": 24600
+        },
+        {
+            "model": "Ducati Multistrada V4",
+            "colors": [
+                {"name": "Gris", "price": 750, "image": "images/gray_bike.jpg"},
+                {"name": "Vermell", "price": 950, "image": "images/red_bike.jpg"}
+            ],
+            "basePrice": 26500,
+            "minPrice": 27250
+        },
+        {
+            "model": "Kawasaki Versys 650",
+            "colors": [
+                {"name": "Verd", "price": 350, "image": "images/green_bike.jpg"},
+                {"name": "Negre", "price": 250, "image": "images/black_bike.jpg"}
+            ],
+            "basePrice": 8900,
+            "minPrice": 9150
+        },
+        {
+            "model": "Suzuki Hayabusa",
+            "colors": [
+                {"name": "Gris", "price": 1200, "image": "images/silver_blue_bike.jpg"},
+                {"name": "Negre", "price": 800, "image": "images/black_bike.jpg"}
+            ],
+            "basePrice": 20400,
+            "minPrice": 21200
         }
     ]
 }

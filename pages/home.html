@@ -1,0 +1,32 @@
+<div class="filters">
+    <div class="filter-group">
+        <label>Model:</label>
+        <input type="text" id="modelSearch" placeholder="Cerca per model...">
+    </div>
+    <div class="filter-group">
+        <label>Color:</label>
+        <select id="colorFilter">
+            <option value="">Tots els colors</option>
+        </select>
+    </div>
+    <div class="filter-group">
+        <label>Preu:</label>
+        <select id="priceFilter">
+            <!-- Les opcions es generaran dinàmicament -->
+        </select>
+    </div>
+</div>
+
+<div class="bike-list" id="bikeList"></div>
+
+<div class="configuration" id="configuration">
+    <h3>Configura la teva moto</h3>
+    <img id="configuredImage" class="bike-image">
+    <div>
+        <label>Color:</label>
+        <select id="colorSelect"></select>
+    </div>
+    <div>
+        <h4>Preu final: <span id="finalPrice">0</span>€</h4>
+    </div>
+</div>

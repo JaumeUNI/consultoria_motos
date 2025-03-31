@@ -3,48 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cercador de Motos</title>
+    <title>Consultoria Motos</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/index.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Inici</a></li>
-            <li><a href="model-viewer.html">Vista 3D</a></li>
-        </ul>
-    </nav>
-    <h1>Cercador de Motos</h1>
-    <div class="filters">
-        <div class="filter-group">
-            <label>Model:</label>
-            <input type="text" id="modelSearch" placeholder="Cerca per model...">
-        </div>
-        <div class="filter-group">
-            <label>Color:</label>
-            <select id="colorFilter">
-                <option value="">Tots els colors</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>Preu màxim:</label>
-            <input type="number" id="maxPrice" placeholder="Preu màxim...">
-        </div>
-    </div>
+    <header>
+        <h1>Consultoria Motos</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="loadPage('home.html')">Inici</a></li>
+                <li><a href="#" onclick="loadPage('about.html')">Sobre Nosaltres</a></li>
+                <li><a href="#" onclick="loadPage('contact.html')">Contacte</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="bike-list" id="bikeList"></div>
+    <main id="mainContent">
+        <!-- Aquí es carregarà el contingut de les pàgines -->
+    </main>
 
-    <div class="configuration" id="configuration">
-        <h3>Configura la teva moto</h3>
-        <img id="configuredImage" class="bike-image">
-        <div>
-            <label>Color:</label>
-            <select id="colorSelect"></select>
-        </div>
-        <div>
-            <h4>Preu final: <span id="finalPrice">0</span>€</h4>
-        </div>
-    </div>
-
-    <script src="./js/index.js"></script>
+    <footer>
+        <p>&copy; 2023 Consultoria Motos. Tots els drets reservats.</p>
+    </footer>
 </body>
 </html>
