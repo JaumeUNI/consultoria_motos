@@ -9,7 +9,7 @@ async function loadBikeData() {
         bikes = data.bikes;
         init();
     } catch (error) {
-        console.error('Error cargando datos:', error);
+        console.error('Error carregant dades:', error);
     }
 }
 
@@ -68,10 +68,10 @@ function selectBike(model) {
     selectedBike = bikes.find(b => b.model === model);
     displayConfiguration();
     displayBikes();
-    // LocalStorage guardi info config de cada moto que es cliqui per separat (Bike(n))
+    // Guardar configuracio de la moto seleccionada al localStorage
     localStorage.setItem('Bike' + model, JSON.stringify(selectedBike));
 
-    // Scroll to the configuration section
+    // Fer scroll fins a la seccio de configuracio
     const configSection = document.getElementById('configuration');
     configSection.scrollIntoView({ behavior: 'smooth' });
 }
@@ -108,17 +108,17 @@ function updateConfiguration() {
 
 // Funcio que inicialitza la pagina
 function init() {
-    // Cargar colores únicos en el filtro
+    // Carregar colors unics al filtre
     const uniqueColors = [...new Set(bikes.flatMap(b => b.colors.map(c => c.name)))];
     const colorFilter = document.getElementById('colorFilter');
     uniqueColors.forEach(color => {
         colorFilter.innerHTML += `<option value="${color}">${color}</option>`;
     });
 
-    // Initialize the price slider
+    // Inicialitzar el slider de preu
     initializePriceSlider();
 
-    // Event listeners
+    // Afegir event listeners
     document.querySelectorAll('.filters input, .filters select').forEach(element => {
         element.addEventListener('input', displayBikes);
     });
@@ -129,7 +129,7 @@ function init() {
     displayBikes();
 }
 
-// Funció per carregar pàgines dinàmicament
+// Funcio per carregar pagines dinamicament
 async function loadPage(page) {
     try {
         const response = await fetch(`./pages/${page}`);
@@ -145,15 +145,15 @@ async function loadPage(page) {
             document.body.appendChild(newScript).parentNode.removeChild(newScript);
         });
 
-        // Si la pàgina carregada és home.html, inicialitzar les dades de les motos
+        // Si la pagina carregada es home.html, inicialitzar les dades de les motos
         if (page === 'home.html') {
             loadBikeData();
         }
     } catch (error) {
-        console.error('Error carregant la pàgina:', error);
+        console.error('Error carregant la pagina:', error);
         document.getElementById('mainContent').innerHTML = '<p>Error carregant el contingut.</p>';
     }
 }
 
-// Carregar la pàgina inicial
+// Carregar la pagina inicial
 document.addEventListener('DOMContentLoaded', () => loadPage('home.html'));
