@@ -37,7 +37,7 @@ h1 {
 
 .bike-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
     gap: 20px;
 }
 
@@ -106,14 +106,14 @@ h1 {
 header {
     background-color: #007bff;
     color: white;
-    padding: 20px 0; /* Remove side padding */
+    padding: 20px 0;
     text-align: center;
     width: 100%;
     position: relative;
     left: 0;
     margin-left: 0;
     margin-right: 0;
-    max-width: none; /* Ensure it spans the full width */
+    max-width: none;
 }
 
 header nav ul {
